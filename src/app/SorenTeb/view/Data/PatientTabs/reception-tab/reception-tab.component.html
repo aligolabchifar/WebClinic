@@ -1,0 +1,63 @@
+<div class="col-lg-12">
+
+  <div class="col-lg-12">
+
+    <nav>
+      <!--      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist" onclick="alert('Hello there!')">-->
+      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+
+        <a class="nav-item nav-link active" id="nav-Document-tab" data-toggle="tab" href="#nav-Reception" role="tab"
+           aria-controls="nav-Document" aria-selected="true"> پذیرش بیمار</a>
+
+        <a *ngIf="this.cId.toString() !=='0'" class="nav-item nav-link" id="nav-instalment-tab" data-toggle="tab" href="#nav-drug"
+           role="tab"
+           aria-controls="nav-instalment" aria-selected="false">پذیرش دارو</a>
+
+
+      </div>
+    </nav>
+
+    <div class="tab-content " id="nav-tabContent">
+
+      <div  class="tab-pane fade show active" id="nav-Reception" role="tabpanel" aria-labelledby="nav-Reception-tab">
+        <app-reception-patient [receptionById]="receptionById" [receptionServiceModelByIdModelDtoMain] = "receptionServiceModelByIdModelDtoMain"></app-reception-patient>
+      </div>
+
+      <div *ngIf="this.cId.toString() !=='0'" class="tab-pane fade show active" id="nav-drug" role="tabpanel" aria-labelledby="nav-drug-tab">
+        <app-reception-patient [receptionById]="receptionById" [receptionServiceModelByIdModelDtoMain] = "receptionServiceModelByIdModelDtoMain"></app-reception-patient>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+<!--<app-default-modal ParentId="NewActionModal">-->
+<!--  <p>19/3</p>-->
+<!--  <app-new-action [loan]="loan"></app-new-action>-->
+<!--</app-default-modal>-->
+<!--&lt;!&ndash;MODAL&ndash;&gt;-->
+<!--<div class="row">-->
+<!--  <div class="col-12">-->
+<!--    <div class="modal fade " id="NewActionModal" style="z-index: 1000000" tabindex="-1" role="dialog" aria-labelledby="testModalLabel" aria-hidden="true" aria-modal="true">-->
+<!--      <div class="modal-dialog modal-lg" role="document">-->
+<!--        <div class="modal-content rtl">-->
+<!--          <div class="modal-header background-color-blue7 " >-->
+<!--            <button  type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModalButton>-->
+<!--              <span aria-hidden="true" class="ml-lg-4">&times;</span>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div class="modal-body rtl">-->
+<!--            <div class="col-12">-->
+<!--              <app-new-action [loan]="loan" ></app-new-action>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

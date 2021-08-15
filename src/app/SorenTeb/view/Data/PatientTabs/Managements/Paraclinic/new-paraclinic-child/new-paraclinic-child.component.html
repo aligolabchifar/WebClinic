@@ -1,0 +1,83 @@
+<form *ngIf="baseParaclinicChild !== undefined " class="form-horizontal rtl show" (ngSubmit)="onSubmit()" #f="ngForm">
+
+  <div class="row rtl">
+    <div class="col-md-12">
+      <app-default-panel headerTitle="تعریف پاراکلینیک" panelId="baseParaclinicLists">
+
+        <div *ngIf="baseParaclinicChild !== undefined" class="col-md-6" >
+          <span>نام پاراکلینیک</span>
+          <input name="paraclinicChildName" [(ngModel)]="baseParaclinicChild.paraclinicChildName" autocomplete="off" type="text" class="form-control rtl"/>
+        </div>
+
+
+        <div class="col-md-6">
+          <div><span class="text-right">نوع پاراکلینیک</span></div>
+          <kendo-combobox [data]="listParaclinicType"
+                          name="paraclinicChildType"
+                          [textField]="'name'"
+                          [valueField]="'id'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChangeParaclinicType($event)"
+                          style="width: 100%;z-index: 1000000;"
+                          [(ngModel)]="baseParaclinicChild.paraclinicChildType"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+          </kendo-combobox>
+        </div>
+
+
+
+        <div class="col-md-6">
+          <div><span class="text-right">نام شرکت مالی</span></div>
+          <kendo-combobox [data]="lstCompanyList"
+                          name="baseCompanyId"
+                          [textField]="'companyName'"
+                          [valueField]="'id'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChangeCompany($event)"
+                          style="width: 100%;z-index: 100000;"
+                          [(ngModel)]="baseParaclinicChild.baseCompanyId"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+          </kendo-combobox>
+        </div>
+
+
+        <div  class="col-md-3" >
+          <div class="col-md-6">
+            <br>
+            <div>
+              <span class="text-right">غیر فعال شود ؟</span></div>
+            <input style="background-color: red;" type="checkbox" id="isDisabled" name="isDisabled"
+                   [(ngModel)]="baseParaclinicChild.isDisabled">
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <br>
+
+
+
+
+
+        <div class="rectangle">
+          <button type="submit" #registerButton class="button button4"
+                  style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i
+            class="fa fa-floppy-o" aria-hidden="true"> </i></button>
+
+        </div>
+
+      </app-default-panel>
+    </div>
+  </div>
+
+
+
+</form>

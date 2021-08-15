@@ -1,0 +1,5 @@
+input[type="checkbox"]:disabled {
+  background-color: #addaed !important;
+  color: red;
+  font-size: large;
+}

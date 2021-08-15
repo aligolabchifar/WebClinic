@@ -1,0 +1,98 @@
+
+
+<form *ngIf="baseServiceGroupRelation !== undefined  " class="form-horizontal rtl show" (ngSubmit)="onSubmit()" #f="ngForm">
+  <app-default-panel headerTitle="ارتباط سرویس و پاراکلینیک" panelId="baseServiceParaclinicChils">
+    <div class="row paddingtotal" style="margin: 5px;">
+      <div class="row rtl col-md-12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div  class="col-md-6" style="margin-top: 10px;direction: rtl" >
+          <!--          <div class="form-group" >-->
+          <!--            <div class="input-group">-->
+          <div><span class="text-right">پاراکلینیک</span></div>
+          <kendo-combobox [data]="listItems"
+                          name="paraclinicChild"
+                          [textField]="'text'"
+                          [valueField]="'value'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChangeParaclinic($event)"
+                          [(ngModel)]="baseServiceGroupRelation.baseParaclinicChildId"
+                          style="width: 100%;z-index: 2000000;"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+          </kendo-combobox>
+        </div>
+
+
+
+        <div  class="col-md-6" style="margin-top: 10px;direction: rtl"  >
+          <div><span class="text-right">انتخاب سرویس</span></div>
+          <kendo-combobox [data]="baseServiceParaclinicChildListModelDto"
+                          name="ServiceName"
+                          [textField]="'serviceName'"
+                          [valueField]="'baseServiceId'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChangeService($event)"
+                          [(ngModel)]="baseServiceGroupRelation.baseServiceId"
+                          [virtual]="virtualization"
+                          [filterable]="true"
+                          style="width: 100%;z-index: 1000000;"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"
+                          (filterChange)="handleFilter($event)">
+
+          </kendo-combobox>
+        </div>
+
+
+
+
+        <div  class="col-md-6" style="margin-top: 10px;direction: rtl"  >
+          <div><span class="text-right">گروه سرویس</span></div>
+          <kendo-combobox [data]="lstServciceGroupList"
+                          name="GroupName"
+                          [textField]="'baseServiceGroupName'"
+                          [valueField]="'id'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueGroupId($event)"
+                          [(ngModel)]="baseServiceGroupRelation.baseServiceGroupId"
+                          [virtual]="virtualization"
+                          [filterable]="true"
+                          style="width: 100%;z-index: 1000000;"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"
+
+          >
+
+          </kendo-combobox>
+        </div>
+
+
+
+
+
+
+        <div  class="col-md-12" style="margin-top: 10px;direction: rtl" >
+          <div class="rectangle">
+            <button type="submit" #registerButton class="button button4"
+                    style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i
+              class="fa fa-floppy-o" aria-hidden="true"> </i></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </app-default-panel>
+
+
+
+</form>

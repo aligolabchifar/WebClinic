@@ -1,0 +1,102 @@
+
+
+
+
+
+<div class="login-container">
+  <div class="login-box animated fadeInDown">
+    <div class="col-md-12" style="text-align: center;float: right;" >
+<!--      <a style="color: white;font-size: 14px" href="https://www.karafariniomid.ir/"><img class="logo" alt="سامانه وصول مطالبات" title="سامانه وصول مطالبات" src="/assets/member-panel/images/PublicLogo/KarafariniOmidLogo.png"></a>-->
+    </div>
+    <div class="login-logo-title text-center" style="color:white">
+      سامانه مدیریت کلینیک سورن طب
+    </div>
+    <div class="login-body" style="background-color: #777777; ">
+      <div class="login-title text-right" style="color: white">ورود اعضاء</div>
+      <div  class="form-horizontal" >
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="alert alert-danger text-right" *ngIf="this.errorMessage !==''">
+              <strong>خطا!</strong>
+              {{this.errorMessage}}
+            </div>
+          </div>
+
+          <div class="col-md-12" >
+            <input  name="username" [(ngModel)]="username" type="text" class="form-control rtl" placeholder="نام کاربری"/>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-12"style="direction: rtl">
+            <input   name="password" [(ngModel)]="password" type="password" class="form-control rtl" placeholder="رمز عبور"/>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 10px;" >
+          <button class="btn btn-info btn-block" style="background-color: #00acac;min-height: 40px !important;" (click)="SetParaclinic()">تائید</button>
+        </div>
+
+        <div *ngIf="this.isShowItem===true" class="col-md-12" style="margin-top: 10px;direction: rtl" >
+<!--          <div class="form-group" >-->
+<!--            <div class="input-group">-->
+          <kendo-combobox [data]="listItems"
+                          name="branchNameComboSearch"
+                          [textField]="'text'"
+                          [valueField]="'value'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChange($event)"
+                          style="width: 100%;"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"
+                          [placeholder]="'انتخاب پاراکلینیک'">
+          </kendo-combobox>
+        </div>
+<!--        </div>-->
+<!--        </div>-->
+
+
+
+
+
+
+
+<!--          <div class="form-group"style="direction: rtl;">-->
+<!--&lt;!&ndash;            <label class="control-label">کلمه عبور جدید</label>&ndash;&gt;-->
+<!--            <div class="input-group">-->
+<!--              <kendo-combobox [data]="listItems"-->
+<!--                              name="branchNameComboSearch"-->
+<!--                              [textField]="'text'"-->
+<!--                              [valueField]="'value'"-->
+<!--                              [valuePrimitive]="true"-->
+<!--                              style="width: 300px;"-->
+<!--                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"-->
+<!--                              [placeholder]="'انتخاب پاراکلینیک'">-->
+<!--              </kendo-combobox>-->
+<!--          </div>-->
+<!--          </div>-->
+
+
+
+
+
+
+
+
+
+        <div *ngIf="this.isShowItem===true" class="col-md-12" style="margin-top: 10px;" >
+          <button class="btn btn-info btn-block" style="background-color: #00acac;min-height: 40px !important;" (click)="login()">ورود</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="login-footer-center">
+
+
+      <div>
+        <a style="color: white;font-size: 14px" href="http://www.sorentebco.ir/">شرکت نرم افزاری سورن طب </a>
+      </div>
+    </div>
+  </div>
+
+</div>

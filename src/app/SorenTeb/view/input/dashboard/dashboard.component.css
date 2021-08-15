@@ -1,0 +1,5 @@
+.chart-holder + #dashboard-area-1 + #dashboard-bar-1 {
+  height: 200px;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

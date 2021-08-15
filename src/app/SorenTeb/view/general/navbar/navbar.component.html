@@ -1,0 +1,89 @@
+<style>
+  .header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 100000;
+    direction: rtl;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+
+  }
+
+  .header .right {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .header .right .item {
+    min-width: 80px;
+    height: 50px;
+  }
+
+  .header .right .item div {
+    min-width: 100%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: right;
+  }
+
+  .header .right .item div:first-child {
+    font-weight: bold;
+  }
+
+  .header .right .item div:last-child {
+    font-size: 13px;
+  }
+
+  .header .right .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+  }
+
+  .header .left {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .header .left .item {
+    min-width: 80px;
+    height: 50px;
+  }
+</style>
+
+<!--<app-smart-search #smartSearchComponent *ngIf="searchbox === true"></app-smart-search>-->
+<ul class="x-navigation x-navigation-horizontal x-navigation-panel " style="z-index: 1000000">
+<!--  <li class="xn-search">-->
+<!--    <input type="text" name="searchStr" id="searchKey" placeholder="Search..." (click)="showSmartSearch()"-->
+
+<!--           (input)="smartSearch($event)"/>-->
+<!--  </li>-->
+  <li class="xn-icon-button pull-left">
+    <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out" style="color: red;"></span></a>
+  </li>
+  <li class="xn-icon-button pull-left">
+    <a routerLink="/home" class="mb-control" data-box="#mb-home"><span class="fa fa-home" style="color: #17a2b8"></span></a>
+  </li>
+<!--  <li class="pull-left">-->
+<!--    <button (click)="downloadApp()" class="btn btn-info rtl mt-2" data-box="#mb-home">-->
+<!--      <i style="font-family: inherit">دانلود نرم افزار </i> | <i class="fa fa-android"></i></button>-->
+<!--  </li>-->
+</ul>
+

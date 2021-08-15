@@ -1,0 +1,104 @@
+<div class="row rtl">
+  <div class="col-md-12">
+    <app-default-panel headerTitle="گروه سرویس" panelId="baseServiceGroupLists" >
+
+
+
+      <div class="col-md-12" *ngIf="this.baseServiceGroupListModelDto !== undefined">
+
+
+<!--        <div class="right" style="margin-right: 10px;">-->
+<!--          <button class="btn btn-info qty pull-right" (click)="AddServiceGroup()">ایجاد گروه سرویس</button>-->
+
+<!--        </div>-->
+<!--        <br>-->
+<!--        <br>-->
+        <kendo-grid style="direction: rtl" id="ServiceGroupGrid" [data]="gridData" class="kendo-grid" [height]="200"
+
+                    [pageSize]="state.take"
+                    [skip]="state.skip"
+                    [sortable]="true"
+                    [resizable]="true"
+                    size="100%"
+
+                    [pageable]="{
+                buttonCount: buttonCount,
+                info: info,
+                type: type,
+                pageSizes: pageSizes,
+                previousNext: previousNext
+            }"
+
+                    (dataStateChange)="dataStateChange($event)"
+                    (pageChange)="pageChange($event)">
+
+          <ng-template kendoGridNoRecordsTemplate>
+            رکوردی جهت نمایش وجود ندارد
+          </ng-template>
+
+          <kendo-grid-column [media]="'(min-width: 100px)'" title="ردیف" headerClass="kendo-grid" width="100">
+            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex+1">
+              {{rowIndex }}
+            </ng-template>
+          </kendo-grid-column>
+
+
+          <kendo-grid-column field="id" title="کد گروه" width="150px%"
+                             headerClass="kendo-grid">
+          </kendo-grid-column>
+
+
+          <kendo-grid-column field="baseServiceGroupName" title="نام گروه" width="150px"
+                             headerClass="kendo-grid">
+          </kendo-grid-column>
+
+          <kendo-grid-column field="isDisabledDesc" title="وضعیت" width="150px"
+                             headerClass="kendo-grid">
+          </kendo-grid-column>
+
+
+          <kendo-grid-column title="اقدامات" width="150px" headerClass="kendo-grid">
+            <ng-template kendoGridCellTemplate let-dataItem="dataItem" let-rowIndex="rowIndex">
+              <!--                    <div class="btn-group btn-group-sm">-->
+              <!--                      <button  class="delete" (click)="onDelete(dataItem.id)" tooltip="حذف"></button>-->
+              <!--                    </div>-->
+
+
+
+              <a data-toggle="tooltip" data-placement="top" title="ویرایش گروه" (click)="editGroupService(dataItem)"><i
+                class="fa fa-edit color-blue5 action-button">  </i> </a>
+            </ng-template>
+          </kendo-grid-column>
+
+
+          <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+            <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+            <kendo-pager-numeric-buttons [buttonCount]="10" ></kendo-pager-numeric-buttons>
+            <kendo-pager-next-buttons></kendo-pager-next-buttons>
+            <kendo-pager-info></kendo-pager-info>
+            صفحه جاری : {{currentPage}}
+          </ng-template>
+
+        </kendo-grid>
+        <!--      </div>-->
+        <ng-template #noRecord>
+          <div class="col-12">
+            <div class="alert alert-danger">
+              رکوردی جهت نمایش وجود ندارد
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+
+
+    </app-default-panel>
+  </div>
+</div>
+
+
+<div>
+  <app-default-modal ParentId="NewGroupList" headerText="تعریف گروه سرویس">
+    <app-base-service-group [baseServiceGroupDto]="baseServiceGroupDto" ></app-base-service-group>
+  </app-default-modal>
+</div>

@@ -1,0 +1,67 @@
+<form *ngIf="baseServiceGroupDto !== undefined  " class="form-horizontal rtl show" (ngSubmit)="onSubmit()" #f="ngForm">
+
+  <div class="row rtl">
+    <div class="col-md-12">
+      <app-default-panel headerTitle="تعریف گروه سرویس" panelId="baseServiceGroupParaclinics">
+
+<!--        <div *ngIf="baseServiceGroupDto !== undefined" class="col-md-3" >-->
+<!--          <span>نام گروه سرویس</span>-->
+<!--          <input name="baseServiceGroupName" [(ngModel)]="baseServiceGroupDto.baseServiceGroupName" autocomplete="off" type="text" class="form-control rtl"/>-->
+<!--        </div>-->
+
+
+
+
+
+        <div  class="col-md-6" style="margin-top: 10px;direction: rtl" >
+          <!--          <div class="form-group" >-->
+          <!--            <div class="input-group">-->
+          <kendo-combobox [data]="baseServiceGroupListModelDto"
+                          name="GroupService"
+                          [textField]="'baseServiceGroupName'"
+                          [valueField]="'id'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChangeGroup($event)"
+                          [(ngModel)]="baseServiceGroupDto.groupId"
+                          style="width: 100%;"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"
+                          [placeholder]="'انتخاب گروه سرویس'">
+          </kendo-combobox>
+        </div>
+
+
+
+
+
+        <div  class="col-md-6" style="margin-top: 10px;direction: rtl" >
+          <!--          <div class="form-group" >-->
+          <!--            <div class="input-group">-->
+          <kendo-combobox [data]="listItems"
+                          name="branchNameComboSearch"
+                          [textField]="'text'"
+                          [valueField]="'value'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChange($event)"
+                          [(ngModel)]="baseServiceGroupDto.baseParaclinicChildId"
+                          style="width: 100%;"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"
+                          [placeholder]="'انتخاب پاراکلینیک'">
+          </kendo-combobox>
+        </div>
+
+
+
+        <div class="rectangle">
+          <button type="submit" #registerButton class="button button4"
+                  style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i
+            class="fa fa-floppy-o" aria-hidden="true"> </i></button>
+
+        </div>
+
+      </app-default-panel>
+    </div>
+  </div>
+
+
+
+</form>

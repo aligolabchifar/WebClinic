@@ -1,0 +1,48 @@
+<div class="col-lg-12">
+
+  <div class="col-lg-12">
+
+    <nav>
+      <!--      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist" onclick="alert('Hello there!')">-->
+      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+
+        <a class="nav-item nav-link active" id="nav-Document-tab" data-toggle="tab" href="#nav-RoutinList"
+           role="tab"
+           aria-controls="nav-Document" aria-selected="true"> لیست روتین ها</a>
+
+
+        <a  class="nav-item nav-link" id="nav-instalment-tab" data-toggle="tab" href="#nav-Routin-ParaclinicChild"
+           role="tab"
+           aria-controls="nav-instalment" aria-selected="false">ارتباط روتین و پاراکلینیک</a>
+
+
+        <a  class="nav-item nav-link" id="nav-RoutinDetail-tab" data-toggle="tab" href="#nav-Routin-Detail"
+            role="tab"
+            aria-controls="nav-instalment1" aria-selected="false">جزئیات روتین</a>
+
+
+      </div>
+    </nav>
+
+    <div class="tab-content " id="nav-tabContent">
+
+      <div   class="tab-pane fade show active" id="nav-RoutinList" role="tabpanel" aria-labelledby="nav-Routin-tab">
+        <app-base-service-routin-list></app-base-service-routin-list>
+      </div>
+
+      <div  class="tab-pane fade show " id="nav-Routin-ParaclinicChild" role="tabpanel" aria-labelledby="nav-RoutinParaclinic-tab">
+        <app-routin-paraclinic-child-list></app-routin-paraclinic-child-list>
+      </div>
+
+
+      <div  class="tab-pane fade show " id="nav-Routin-Detail" role="tabpanel" aria-labelledby="nav-RoutinDetail-tab">
+        <app-base-service-routin-detail-list></app-base-service-routin-detail-list>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div>

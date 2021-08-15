@@ -1,0 +1,86 @@
+
+<!--  <div class="row">-->
+<!--    <div class="col-lg-12">-->
+
+<!--      <div class="panel panel-default form-horizontal form-bordered panel-mode-1">-->
+<!--        <div class="panel-heading text-right backgroundColor-grey color-white ">-->
+<!--          فهرست فایلهای ضمیمه شده-->
+<!--          <i class="fa fa-list m-l-5 color-white"></i>-->
+<!--          <a class="qty pull-left" data-toggle="collapse" data-target="#incorporated"-->
+<!--             aria-expanded="true"-->
+<!--             panel-action="collapse2"><span class="minus " >-</span></a>-->
+<!--        </div>-->
+<!--        <div id="incorporated" class="panel-collapse collapse show">-->
+<!--          <app-incorporated-files></app-incorporated-files>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+
+
+
+<div class="col-lg-12 col-md-12">
+  <div class="panel panel-default form-horizontal form-bordered panel-mode-1">
+
+
+
+    <div class="panel-heading text-right backgroundColor-grey color-white  ">
+
+
+
+      <i *ngIf="faIcon==='' || faIcon=== null" class="fa fa-list m-l-5"  ></i>
+      <i *ngIf="faIcon!==''" class="fa fa-{{faIcon}} m-l-5"></i>
+
+
+
+      {{ headerTitle }}
+
+
+
+
+
+
+
+
+      <a class="qty pull-left" data-toggle="collapse" href="#{{panelId}}" aria-expanded="true"
+         panel-action="collapse2"><span class="minus4" style="font: 15px/1 Arial,sans-serif,bold;"><i class="fa fa-minus fa-sm" style="font-size: 12px;"></i></span></a>
+
+      <a class="qty pull-left" data-toggle="collapse" style="margin-left: 5px;" (click)="reloadPages(panelId)"
+         aria-expanded="true"
+         panel-action="collapse2"><span class="minus2" style="font: 15px/1 Arial,sans-serif,bold;" ><i class="fa fa-repeat fa-sm" style="font-size: 12px;"></i></span></a>
+
+
+      <a class="qty pull-left" data-toggle="collapse" style="margin-left: 5px;" (click)="newItem(panelId)"
+         aria-expanded="true"
+         panel-action="collapse2"><span class="minus5" style="font: 15px/1 Arial,sans-serif,bold;" ><i class="fa fa-plus fa-sm" style="font-size: 12px;"></i></span></a>
+
+
+
+
+    </div>
+
+
+
+    <!--    <div class="left" style="margin-left: 10px;">-->
+    <!--      <a class="qty pull-left" data-toggle="collapse" style="margin-left: 5px;" (click)="refereshExcel()"-->
+    <!--         aria-expanded="true"-->
+    <!--         panel-action="collapse2"><span class="minus2 "><i class="fa fa-arrow-down fa-sm" style="font-size: 12px;"></i></span></a>-->
+    <!--      <a class="qty pull-left" data-toggle="collapse" style="margin-left: 5px;" (click)="reloadPage()"-->
+    <!--         aria-expanded="true"-->
+    <!--         panel-action="collapse2"><span class="minus3 "><i class="fa fa-repeat fa-sm"-->
+    <!--                                                           style="font-size: 12px;"></i></span></a>-->
+    <!--      <a class="qty pull-left" data-toggle="collapse" data-target="#allLoanList"-->
+    <!--         aria-expanded="true"-->
+    <!--         panel-action="collapse2"><span class="minus4"><i class="fa fa-minus fa-sm" style="font-size: 12px;"></i></span></a>-->
+    <!--    </div>-->
+    <!--    -->
+
+    <div id="{{panelId}}" class="panel-collapse collapse show ">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <br  style="clear:both" />
+
+</div>

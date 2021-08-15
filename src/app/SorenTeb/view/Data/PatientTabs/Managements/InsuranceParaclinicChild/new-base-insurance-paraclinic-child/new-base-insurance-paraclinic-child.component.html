@@ -1,0 +1,134 @@
+<form *ngIf="baseInsuranceParaclinicChild !== undefined " class="form-horizontal rtl show" (ngSubmit)="onSubmit()" #f="ngForm">
+
+  <div class="row rtl">
+    <div class="col-md-12">
+      <app-default-panel headerTitle="تعریف بیمه" panelId="baseInsuranceParaclinicLists">
+
+        <div class="row"style="padding-right: 10px;padding-left: 10px;">
+
+        <div class="col-md-4">
+          <div><span class="text-right">نام بیمه</span></div>
+          <kendo-combobox [data]="lstBaseInsuranceList"
+                          name="insuranceName"
+                          [textField]="'insuranceName'"
+                          [valueField]="'id'"
+                          [valuePrimitive]="true"
+
+                          (valueChange)="valueChangeInsurance($event)"
+                          style="width: 100%;z-index: 10000000;"
+                          [(ngModel)]="baseInsuranceParaclinicChild.baseInsuranceId"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+          </kendo-combobox>
+        </div>
+
+
+
+
+
+
+
+
+        <div  class="col-md-4" >
+          <span>فرانشیز بیمار</span>
+          <input name="franshizPercent" [(ngModel)]="baseInsuranceParaclinicChild.franshizPercent" autocomplete="off" type="text" class="form-control rtl"/>
+        </div>
+
+
+          <div class="col-md-4">
+            <div>
+              <span class="text-right">بیمه غیر فعال شود</span></div>
+            <input style="background-color: red;" type="checkbox" id="isDisabledInsurance" name="isDisabledInsurance"
+                   [(ngModel)]="baseInsuranceParaclinicChild.isDisabledInsurance">
+          </div>
+
+
+
+
+        <div class="col-md-4">
+          <div><span class="text-right">نوع تعرفه</span></div>
+          <kendo-combobox [data]="baseCertificateTypeListModelDto"
+                          name="certificateTypeId"
+                          [textField]="'baseCertificateName'"
+                          [valueField]="'baseCertificateCode'"
+                          [valuePrimitive]="true"
+
+                          (valueChange)="valueCertificateTypeId($event)"
+                          style="width: 100%;z-index: 1000000;"
+                          [(ngModel)]="baseInsuranceParaclinicChild.certificateTypeId"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+          </kendo-combobox>
+        </div>
+
+
+
+        <div class="col-md-4">
+          <div><span class="text-right">نوع تعرفه آزاد</span></div>
+          <kendo-combobox [data]="baseCertificateTypeListModelDto"
+                          name="certificateTypeIdFree"
+                          [textField]="'baseCertificateName'"
+                          [valueField]="'baseCertificateCode'"
+                          [valuePrimitive]="true"
+
+                          (valueChange)="valueCertificateTypeIdFree($event)"
+                          style="width: 100%;z-index: 1000000;"
+                          [(ngModel)]="baseInsuranceParaclinicChild.certificateTypeIdFree"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+          </kendo-combobox>
+        </div>
+
+
+
+          <div class="col-md-4">
+            <div>
+              <span class="text-right">بیمه پیش فرض پذیرش باشد</span></div>
+            <input  type="checkbox" id="isDefultInsurance" name="isDefultInsurance"
+                   [(ngModel)]="baseInsuranceParaclinicChild.isDefultInsurance">
+          </div>
+
+
+          <div class="col-md-4">
+            <div>
+              <span class="text-right">بیمه از نوع آزاد است</span></div>
+            <input  type="checkbox" id="isFreeInsurance" name="isFreeInsurance"
+                    [(ngModel)]="baseInsuranceParaclinicChild.isFreeInsurance">
+          </div>
+
+
+
+          <div  class="col-md-4" style="margin-top: 10px;direction: rtl" >
+            <!--          <div class="form-group" >-->
+            <!--            <div class="input-group">-->
+            <div><span class="text-right">پاراکلینیک</span></div>
+            <kendo-combobox [data]="listItems"
+                            name="paraclinicChild"
+                            [textField]="'text'"
+                            [valueField]="'value'"
+                            [valuePrimitive]="true"
+                            (valueChange)="valueChangeParaclinic($event)"
+                            [(ngModel)]="baseInsuranceParaclinicChild.baseParaclinicChildId"
+                            style="width: 100%;z-index: 10000;"
+                            [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+            </kendo-combobox>
+          </div>
+
+
+
+        </div>
+
+
+
+
+        <div class="rectangle">
+          <button type="submit" #registerButton class="button button4"
+                  style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i
+            class="fa fa-floppy-o" aria-hidden="true"> </i></button>
+
+        </div>
+
+      </app-default-panel>
+    </div>
+  </div>
+
+
+
+</form>

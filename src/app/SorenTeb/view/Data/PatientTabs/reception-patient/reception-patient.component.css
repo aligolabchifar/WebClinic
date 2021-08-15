@@ -1,0 +1,18 @@
+/*label {*/
+/*  !* Other styling... *!*/
+/*  text-align: right;*/
+/*  clear: both;*/
+/*  float:left;*/
+/*  margin-right:15px;*/
+/*}*/
+
+
+.rectangle {
+  height: 50px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #E5E8E8;
+
+}
+
+

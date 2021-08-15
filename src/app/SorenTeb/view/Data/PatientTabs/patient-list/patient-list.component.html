@@ -1,0 +1,65 @@
+<div class="col-md-12">
+  <br>
+  <kendo-grid style="direction: rtl" id="PatientListGrid" [data]="gridData" class="kendo-grid" [height]="200"
+
+              [pageSize]="state.take"
+              [skip]="state.skip"
+              [sortable]="true"
+              [resizable]="true"
+              size="100%"
+              [pageable]="false"
+              (dataStateChange)="dataStateChange($event)"
+              (pageChange)="pageChange($event)">
+    <ng-template kendoGridNoRecordsTemplate>
+      رکوردی جهت نمایش وجود ندارد
+    </ng-template>
+
+    <kendo-grid-column [media]="'(min-width: 100px)'" title="ردیف" headerClass="kendo-grid" width="100">
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex+1">
+        {{rowIndex }}
+      </ng-template>
+    </kendo-grid-column>
+
+
+    <kendo-grid-column field="documentCode" title="شماره پرونده" width="150px%"
+                       headerClass="kendo-grid">
+    </kendo-grid-column>
+
+
+    <kendo-grid-column field="receptionCode" title="شماره پذیرش" width="150px"
+                       headerClass="kendo-grid">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="firstName" title="نام" width="150px"
+                       headerClass="kendo-grid">
+    </kendo-grid-column>
+
+
+    <kendo-grid-column field="lastName" title="نام خانوادگی" width="150px"
+                       headerClass="kendo-grid">
+    </kendo-grid-column>
+
+
+    <kendo-grid-column title="اقدامات" width="150px" headerClass="kendo-grid">
+      <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+        <button class="action-button edit" (click)="setFindPatient(dataItem)" tooltip="ثبت"></button>
+        <div class="btn-group btn-group-sm">
+
+        </div>
+      </ng-template>
+    </kendo-grid-column>
+
+
+  </kendo-grid>
+  <!--      </div>-->
+  <ng-template #noRecord>
+    <div class="col-12">
+      <div class="alert alert-danger">
+        رکوردی جهت نمایش وجود ندارد
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+

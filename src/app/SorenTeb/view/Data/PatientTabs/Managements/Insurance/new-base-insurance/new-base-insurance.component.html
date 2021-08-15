@@ -1,0 +1,26 @@
+<form *ngIf="baseInsuranceFirst !== undefined " class="form-horizontal rtl show" (ngSubmit)="onSubmit()" #f="ngForm">
+
+  <div class="row rtl">
+    <div class="col-md-12">
+      <app-default-panel headerTitle="تعریف بیمه" panelId="baseInsuranceLists">
+
+        <div *ngIf="baseInsuranceFirst !== undefined" class="col-md-6" >
+          <span>نام بیمه</span>
+          <input name="insuranceName" [(ngModel)]="baseInsuranceFirst.insuranceName" autocomplete="off" type="text" class="form-control rtl"/>
+        </div>
+
+
+        <div class="rectangle">
+          <button type="submit" #registerButton class="button button4"
+                  style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i
+            class="fa fa-floppy-o" aria-hidden="true"> </i></button>
+
+        </div>
+
+      </app-default-panel>
+    </div>
+  </div>
+
+
+
+</form>

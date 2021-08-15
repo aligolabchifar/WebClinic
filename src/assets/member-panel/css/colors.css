@@ -1,0 +1,121 @@
+.color-blue {
+  color: #1b6d85;
+}
+
+.color-blue2 {
+  color: blue;
+}
+
+
+.BackGroundcolor-blue2 {
+  background-color: blue;
+}
+
+
+.color-green {
+  color: #2b542c;
+}
+
+
+.color-f8f2f1 {
+  color: #2b542c;
+}
+
+.backgroundColor-YellowDark
+{
+  background-color: #ec971f;
+}
+
+.color-white {
+  color: white !important;
+}
+
+.backgroundColor-white {
+  background-color: white !important;
+}
+
+
+.color-red {
+  color: red;
+}
+
+
+.backgroundColor-blue {
+  background-color: #a6e1ec;
+}
+
+
+.backgroundColor-grey
+{
+  /*background-color: #5e5e5e !important;*/
+  background-color: #707478 !important;
+}
+
+
+
+.backgroundColor-F0
+{
+  /*background-color: #5e5e5e !important;*/
+  background-color: #F0F0F0;
+}
+
+
+.backgroundColor-F5F5F5
+{
+  /*background-color: #5e5e5e !important;*/
+  background-color: #F5F5F5;
+}
+
+
+
+.color-white-important {
+  color: white !important;
+}
+
+.color-forestgreen {
+  color: forestgreen;
+}
+
+.color-orange {
+  color: #ec971f;
+}
+
+.color-blue3 {
+  color: #337ab7;
+}
+.color-blue4{
+  color:#3366ff;
+}
+
+.color-red4{
+  color:#880000;
+}
+
+.color-blue5{
+  color:#337ab7;
+}
+
+.color-green4 {
+  color: #1caf9a;
+}
+
+.color-green5 {
+  color: #255625;
+}
+.BackGround-color-blue6 {
+  background-color: #E5F2F5 !important;
+}
+.background-color-blue7 {
+  background-color: #B4E5F4 !important;
+}
+
+.tableHeaderColor {
+  background-color: #17a2b8 !important;
+  color: white !important;
+}
+
+
+.tableHeaderColor2 {
+  background-color: #E9EDF1 !important;
+  color: black !important;
+}

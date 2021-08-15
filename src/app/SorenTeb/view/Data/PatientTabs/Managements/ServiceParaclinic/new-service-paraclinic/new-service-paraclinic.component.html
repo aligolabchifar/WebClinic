@@ -1,0 +1,149 @@
+<!--<div class="col-md-6">-->
+<!--<ng-select2  [data]="exampleData"-->
+<!--            [width]="400"-->
+<!--            style="z-index: 3000000;"-->
+
+
+
+<!--&gt;</ng-select2>-->
+
+<!--</div>-->
+
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+
+
+
+<!--<br><br>-->
+
+
+
+<form *ngIf="baseServiceParaclinicChild !== undefined  " class="form-horizontal rtl show" (ngSubmit)="onSubmit()" #f="ngForm">
+      <app-default-panel headerTitle="ارتباط سرویس و پاراکلینیک" panelId="baseServiceParaclinicChils">
+        <div class="row paddingtotal" style="margin: 5px;">
+          <div class="row rtl col-md-12">
+
+
+
+        <div  class="col-md-6" style="margin-top: 10px;direction: rtl"  >
+
+
+          <div><span class="text-right">انتخاب سرویس</span></div>
+          <kendo-combobox [data]="lstServciceList"
+                          name="ServiceName"
+                          [textField]="'serviceName'"
+                          [valueField]="'id'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChangeService($event)"
+
+
+                          [(ngModel)]="baseServiceParaclinicChild.baseServiceId"
+                          [virtual]="virtualization"
+                          [filterable]="true"
+                          style="width: 100%;z-index: 1000000;"
+
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"
+                          (filterChange)="handleFilter($event)">
+
+
+
+            <ng-template kendoComboBoxItemTemplate let-dataItem >
+              <span class="template" >{{ dataItem.id }}</span>{{ dataItem.serviceName }}
+            </ng-template>
+          </kendo-combobox>
+
+
+
+<!--          <h2>1. Basic demo</h2>-->
+<!--          <ng-select2 [data]="exampleData"-->
+<!--                      [width]="300">-->
+<!--          </ng-select2>-->
+
+<!--          <ng-select2 [data]="exampleData"-->
+<!--                      [width]="400"-->
+<!--          ></ng-select2>-->
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div  class="col-md-6" style="margin-top: 10px;direction: rtl" >
+          <!--          <div class="form-group" >-->
+          <!--            <div class="input-group">-->
+          <div><span class="text-right">پاراکلینیک</span></div>
+          <kendo-combobox [data]="listItems"
+                          name="paraclinicChild"
+                          [textField]="'text'"
+                          [valueField]="'value'"
+                          [valuePrimitive]="true"
+                          (valueChange)="valueChangeParaclinic($event)"
+                          [(ngModel)]="baseServiceParaclinicChild.baseParaclinicChildId"
+                          style="width: 100%;z-index: 1000000;"
+                          [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+          </kendo-combobox>
+        </div>
+
+
+            <div  class="col-md-12" style="margin-top: 10px;direction: rtl" >
+              <!--          <div class="form-group" >-->
+              <!--            <div class="input-group">-->
+              <div><span class="text-right">کد کالیفرنیا</span></div>
+              <kendo-combobox [data]="baseCaliforniaListModelDto"
+                              name="California"
+                              [textField]="'californiaName'"
+                              [valueField]="'californiaCode'"
+                              [valuePrimitive]="true"
+                              (valueChange)="valueChangeCalifornia($event)"
+                              [(ngModel)]="baseServiceParaclinicChild.californiaCode"
+                              [virtual]="virtualization"
+                              [filterable]="true"
+                              style="width: 100%;z-index: 1000;"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}"
+                              (filterChange)="handleFilterCalifornia($event)">
+              </kendo-combobox>
+            </div>
+
+            <div class="col-md-3">
+              <span>ضریب</span>
+              <input name="indexQuantity" [(ngModel)]="baseServiceParaclinicChild.indexQuantity" type="text" class="form-control rtl" disabled
+                     style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-3">
+              <span>ضریب بیهوشی</span>
+              <input name="indexQuantityAbsence" [(ngModel)]="baseServiceParaclinicChild.indexQuantityAbsence" type="text" class="form-control rtl" disabled
+                     style="background-color: #D6F5CB"/>
+            </div>
+
+            <div class="col-md-3">
+              <span>ضریب حرفه ای</span>
+              <input name="indexQuantityTechnical" [(ngModel)]="baseServiceParaclinicChild.indexQuantityTechnical" type="text" class="form-control rtl" disabled
+                     style="background-color: #D6F5CB"/>
+            </div>
+
+
+
+            <div  class="col-md-12" style="margin-top: 10px;direction: rtl" >
+        <div class="rectangle">
+          <button type="submit" #registerButton class="button button4"
+                  style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i
+            class="fa fa-floppy-o" aria-hidden="true"> </i></button>
+        </div>
+            </div>
+
+          </div>
+        </div>
+      </app-default-panel>
+
+
+
+</form>

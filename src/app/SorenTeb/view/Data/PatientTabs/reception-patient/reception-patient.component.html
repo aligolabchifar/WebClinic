@@ -1,0 +1,620 @@
+<!--<div class="col-md-6">-->
+<!--  <ng-select2  [data]="exampleData"-->
+<!--               [width]="400"-->
+<!--               style="z-index: 10000000;"-->
+<!--  ></ng-select2>-->
+
+
+
+
+  <form class="form-horizontal rtl show" (ngSubmit)="onSubmit()" #f="ngForm">
+  <div class="row paddingtotal" style="margin: 5px;">
+    <!--  <div class="rectangle">-->
+    <!--    <button  class="button button4" style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i class="fa fa-floppy-o" aria-hidden="true"> </i> </button>-->
+    <!--    <button  class="button button4" style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">برگ پذیرش <i class="fa fa-newspaper-o" aria-hidden="true"> </i> </button>-->
+    <!--    <button  class="button button4" style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">چاپ رضایتمندی <i class="fa fa-newspaper-o" aria-hidden="true"> </i> </button>-->
+    <!--    <button  class="button button4" style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">شرح حال وریدی <i class="fa fa-address-card-o" aria-hidden="true"> </i> </button>-->
+    <!--    <button  class="button button4" style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">صندوق <i class="fa fa-print" aria-hidden="true"> </i> </button>-->
+    <!--    <button  class="button button4" style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">مراجعه مجدد <i class="fa fa-refresh" aria-hidden="true"> </i> </button>-->
+    <!--    <button  class="button button4" style="background-color: #d64fd2;color:white;border: none;margin-top: 10px;margin-right: 5px;">جستجو <i class="fa fa-search" aria-hidden="true"> </i> </button>-->
+
+
+    <!--  </div>-->
+
+    <br>
+    <div class="row rtl">
+      <div class="col-md-6">
+        <app-default-panel headerTitle="اطلاعات فردی" panelId="patientInformation">
+
+          <div class="row paddingtotal" style="margin: 5px;">
+
+            <div class="col-md-6">
+              <span>نوبت مراجعه</span>
+              <input name="rankNo" [(ngModel)]="receptionById.rankNo" type="text" class="form-control rtl" disabled
+                     style="background-color: #D6F5CB"/>
+            </div>
+
+            <div class="col-md-6">
+              <span>شماره استعلام</span>
+              <input name="id" [(ngModel)]="receptionById.id" type="text" class="form-control rtl" disabled
+                     style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>شماره پذیرش</span>
+              <input name="receptionCode" [(ngModel)]="receptionById.receptionCode" type="text" class="form-control rtl"
+                     disabled style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>شماره پرونده</span>
+              <input name="documentCode" [(ngModel)]="receptionById.documentCode" type="text" class="form-control rtl"
+                     disabled style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>تاریخ پذیرش</span>
+              <input name="receptionDate" [(ngModel)]="receptionById.receptionDate" type="text" class="form-control rtl"
+                     disabled style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>زمان پذیرش</span>
+              <input name="receptionTime" [(ngModel)]="receptionById.receptionTime" type="text" class="form-control rtl"
+                     disabled style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>نام بیمار</span>
+              <input name="firstName" [(ngModel)]="receptionById.firstName" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+
+            <div class="col-md-6">
+              <span>نام خانوادگی</span>
+              <input name="lastName" [(ngModel)]="receptionById.lastName" autocomplete="off" (blur)="SetReceptionRenewed(receptionById)"  type="text" class="form-control rtl"/>
+            </div>
+
+            <div class="col-md-6">
+              <span>کد ملی</span>
+              <input name="nationNumber" [(ngModel)]="receptionById.nationNumber" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+
+            <div class="col-md-6">
+              <span>نام پدر</span>
+              <input name="fatherName" [(ngModel)]="receptionById.fatherName" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+
+
+            <div class="col-md-3">
+              <span>سن</span>
+              <input name="age" [(ngModel)]="receptionById.age" (blur)="SetBirthDate(receptionById.age)" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+            <div class="col-md-3">
+              <div><span class="text-right"> نوع سن</span></div>
+              <kendo-combobox [data]="listItems"
+                              name="ageType"
+                              [textField]="'name'"
+                              [valueField]="'id'"
+                              [valuePrimitive]="true"
+                              (valueChange)="valueChangeAgeType($event)"
+                              style="width: 100%;z-index: 1000000"
+                              [(ngModel)]="receptionById.ageType"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+              </kendo-combobox>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>تاریخ تولد</span>
+              <input validation-input="required" validation-min-length="10" type="text" autocomplete="off" class="col-6 form-control"
+                     name="Periodic"
+                     theme="dp-material" dir="rtl"
+                     [dpDayPicker]="datePickerConfig" (blur)="SetAge(receptionById.birthDate)" [(ngModel)]="receptionById.birthDate" #textDate/>
+            </div>
+
+
+<!--            <div class="col-md-6">-->
+<!--              <span>تاریخ جاری</span>-->
+<!--              <input validation-input="required" validation-min-length="10" type="text" autocomplete="off" class="col-6 form-control"-->
+<!--                     name="Periodic"-->
+<!--                     theme="dp-material" dir="rtl"-->
+<!--                     [dpDayPicker]="datePickerConfig" [(ngModel)]="persiancurrentDate" #textDate4/>-->
+<!--            </div>-->
+
+
+
+
+
+            <div class="col-md-6">
+              <div><span class="text-right"> جنسیت</span></div>
+              <kendo-combobox [data]="listSex"
+                              name="sex"
+                              [textField]="'name'"
+                              [valueField]="'id'"
+                              [valuePrimitive]="true"
+                              (valueChange)="valueChangeSex($event)"
+                              style="width: 100%;"
+                              [(ngModel)]="receptionById.sex"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+              </kendo-combobox>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>تلفن همراه</span>
+              <input name="mobile" [(ngModel)]="receptionById.mobile" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+
+            <div class="col-md-6">
+              <span>تلفن ثابت</span>
+              <input name="tel" [(ngModel)]="receptionById.tel" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+
+            <div class="col-md-12">
+              <span>آدرس</span>
+              <input name="address" [(ngModel)]="receptionById.patientAddress" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+
+            <div class="col-md-12">
+              <span>معرف</span>
+              <input name="introducation" [(ngModel)]="receptionById.introducation" autocomplete="off" type="text"
+                     class="form-control rtl"/>
+            </div>
+
+            <div class="col-md-12">
+              <span>توضیحات</span>
+              <input name="description" [(ngModel)]="receptionById.description" autocomplete="off" type="text" class="form-control rtl"/>
+            </div>
+
+
+            <div class="col-md-12">
+              <div>
+                <span class="text-right"> معرف 2</span></div>
+              <kendo-combobox [data]="lstBeneficiaryList"
+                              name="introduction2"
+                              [textField]="'fullBeneficiaryName'"
+                              [valueField]="'id'"
+                              [valuePrimitive]="true"
+                              (valueChange)="valueChangeIntroduction2($event)"
+                              style="width: 100%;"
+                              [(ngModel)]="receptionById.introduction2"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+              </kendo-combobox>
+            </div>
+
+
+            <div class="col-md-6">
+              <br>
+              <div>
+                <span class="text-right">پذیرش غیر فعال شود</span></div>
+              <input style="background-color: red;" type="checkbox" id="iSDisabled" name="iSDisabled"
+                     [(ngModel)]="receptionById.iSDisabled">
+            </div>
+
+
+          </div>
+        </app-default-panel>
+
+
+        <app-default-panel headerTitle="اطلاعات بیمه ای " panelId="InsuranceInformation">
+
+
+          <div class="row paddingtotal" style="margin: 5px;">
+            <div class="col-md-6">
+              <div><span class="text-right">نام بیمه</span></div>
+              <kendo-combobox [data]="lstBaseInsuranceList"
+                              name="baseIndurance"
+                              [textField]="'insuranceName'"
+                              [valueField]="'id'"
+                              [valuePrimitive]="true"
+
+                              (valueChange)="valueChangeInsurance($event)"
+                              style="width: 100%;"
+                              [(ngModel)]="receptionById.insuranceCode"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+              </kendo-combobox>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>فرانشیز</span>
+              <input name="insurancePercent" [(ngModel)]="receptionById.insurancePercent" type="text" autocomplete="off"
+                     class="form-control rtl"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>شماره بیمه</span>
+              <input name="insuranceBookNumber" [(ngModel)]="receptionById.insuranceBookNumber" type="text" autocomplete="off"
+                     class="form-control rtl"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>شماره صفحه</span>
+              <input name="insurancePageNumber" [(ngModel)]="receptionById.insurancePageNumber" type="text" autocomplete="off"
+                     class="form-control rtl"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>تاریخ نسخه</span>
+              <input validation-input="required" validation-min-length="10" type="text" class="col-6 form-control" autocomplete="off"
+                     name="Periodic2"
+                     theme="dp-material" dir="rtl"
+                     [dpDayPicker]="datePickerConfig" [(ngModel)]="receptionById.insuranceVersionDate" #textDate2/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>تاریخ اعتبار</span>
+              <input validation-input="required" validation-min-length="10" type="text" class="col-6 form-control" autocomplete="off"
+                     name="Periodic3"
+                     theme="dp-material" dir="rtl"
+                     [dpDayPicker]="datePickerConfig" [(ngModel)]="receptionById.insuranceExpireDate" #textDate3/>
+            </div>
+
+
+          </div>
+        </app-default-panel>
+      </div>
+
+      <div class="col-md-6">
+
+        <app-default-panel headerTitle="شرح حال بیمار" panelId="patientStatusInformation">
+          <div class="row paddingtotal" style="margin: 5px;">
+
+            <div class="col-md-4">
+              <div>
+                <span class="text-right">DM</span></div>
+              <!--          <input type="checkbox"  [(ngModel)]="receptionDto.isDM" kendoCheckBox />-->
+              <input type="checkbox" id="isDM" name="isDM" [(ngModel)]="receptionById.isDM">
+
+
+            </div>
+
+
+            <div class="col-md-4">
+              <div>
+                <span class="text-right">FH</span></div>
+              <input type="checkbox" id="isFH" name="isFH" [(ngModel)]="receptionById.isFH">
+            </div>
+
+
+            <div class="col-md-4">
+              <div>
+                <span class="text-right">HTN</span></div>
+              <input type="checkbox" id="isHTN" name="isHTN" [(ngModel)]="receptionById.isHTN">
+            </div>
+
+
+            <div class="col-md-4">
+              <div>
+                <span class="text-right">HIP</span></div>
+              <input type="checkbox" id="isHIP" name="isHIP" [(ngModel)]="receptionById.isHIP">
+            </div>
+
+
+            <div class="col-md-4">
+              <div>
+                <span class="text-right">SM</span></div>
+              <input type="checkbox" id="isSM" name="isSM" [(ngModel)]="receptionById.isSM">
+            </div>
+
+
+            <div class="col-md-4">
+              <div>
+                <span class="text-right">Other</span></div>
+              <input type="checkbox" id="isOther" name="isOther" [(ngModel)]="receptionById.isOther">
+            </div>
+
+
+          </div>
+
+
+        </app-default-panel>
+
+        <app-default-panel headerTitle="اطلاعات سرویس" panelId="serviceInformation">
+          <div class="row paddingtotal" style="margin: 5px;">
+
+
+            <div class="col-md-6">
+              <div>
+                <span class="text-right">نام پزشک</span></div>
+              <kendo-combobox [data]="lstBeneficiaryList"
+                              name="beneficiaryId"
+                              [textField]="'fullBeneficiaryName'"
+                              [valueField]="'id'"
+                              [valuePrimitive]="true"
+                              (valueChange)="valueBaseBeneficiaryId($event)"
+                              style="width: 100%;z-index: 2000000"
+                              [(ngModel)]="receptionById.baseBeneficiaryId"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+              </kendo-combobox>
+            </div>
+
+
+            <div class="col-md-6">
+              <div>
+                <span class="text-right">گروه سرویس</span></div>
+              <kendo-combobox [data]="lstServciceGroupList"
+                              name="baseServiceGroupName"
+                              [textField]="'baseServiceGroupName'"
+                              [valueField]="'id'"
+                              [valuePrimitive]="true"
+                              (valueChange)="valueGroupId($event)"
+                              (click)="setGroups()"
+                              style="width: 100%;z-index: 1000000"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+              </kendo-combobox>
+            </div>
+
+
+            <div class="col-md-6">
+              <div><span class="text-right">نام سرویس</span></div>
+
+              <div class="pull-right" style="width: 100%;">
+                <kendo-combobox [data]="lstServciceList"
+                                name="serviceName"
+                                [textField]="'serviceName'"
+                                [valueField]="'id'"
+                                (valueChange)="valueServiceChange($event)"
+                                style="width: 100%;z-index: 1000000"
+                                [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+                </kendo-combobox>
+              </div>
+
+              <!--              <button type="button" class="button button1 pull-right" (click)="InsertService($event)"-->
+              <!--                      style="background-color: #0a97d6;color:white;border: none;">-->
+              <!--                تائید <i class="fa fa-angle-double-down" aria-hidden="true"> </i></button>-->
+            </div>
+
+
+            <div class="col-md-3">
+              <div><span>تعداد</span></div>
+              <div class="pull-right" style="width: 60%;"><input name="serviceIndexQuantity"
+                                                                 [(ngModel)]="serviceIndexQuantity" type="text" autocomplete="off"
+                                                                 class="form-control rtl"/>
+              </div>
+              <button type="button" class="button button1 pull-right" (click)="InsertService($event)"
+                      style="background-color: #0a97d6;color:white;border: none;">
+                تائید <i class="fa fa-angle-double-down" aria-hidden="true"> </i></button>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-6">
+              <div><span class="text-right">نام روتین</span></div>
+
+              <kendo-combobox [data]="baseServiceRoutinDetailMainListModelDto"
+                              name="baseServiceRoutinDetailMainListModelDto"
+                              [textField]="'routinName'"
+                              [valueField]="'id'"
+                              [valuePrimitive]="true"
+                              [(ngModel)]="routin"
+                              (valueChange)="valueChangeRoutin($event)"
+                              style="width: 70%;"
+                              [popupSettings]="{ positionMode: 'fixed', appendTo:'component'}">
+              </kendo-combobox>
+
+<!--              <button type="button" class="button button1 pull-right" (click)="InsertRoutin(routin)"-->
+<!--                      style="background-color: #0a97d6;color:white;border: none;">-->
+<!--                تائید <i class="fa fa-angle-double-down" aria-hidden="true"> </i></button>-->
+            </div>
+
+
+            <div class="col-md-3">
+              <div><span>روتین</span></div>
+              <div class="pull-right" style="width: 60%;"><input name="routin" [(ngModel)]="routin" type="text" autocomplete="off"
+                                                                 class="form-control rtl"/>
+              </div>
+              <button type="button" class="button button1 pull-right" (click)="InsertRoutin(routin)"
+                      style="background-color: #0a97d6;color:white;border: none;">
+                تائید <i class="fa fa-angle-double-down" aria-hidden="true"> </i></button>
+
+            </div>
+
+
+            <br>
+
+            <div class="col-md-12">
+              <br>
+              <kendo-grid style="direction: rtl" id="ServiceGrid" [data]="gridData" class="kendo-grid" [height]="200"
+
+                          [pageSize]="state.take"
+                          [skip]="state.skip"
+                          [sortable]="true"
+                          [resizable]="true"
+                          size="100%"
+                          [pageable]="false"
+
+                          (dataStateChange)="dataStateChange($event)"
+                          (pageChange)="pageChange($event)">
+
+                <ng-template kendoGridNoRecordsTemplate>
+                  رکوردی جهت نمایش وجود ندارد
+                </ng-template>
+
+                <kendo-grid-column [media]="'(min-width: 100px)'" title="ردیف" headerClass="kendo-grid" width="100">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex+1">
+                    {{rowIndex }}
+                  </ng-template>
+                </kendo-grid-column>
+
+
+                <kendo-grid-column field="serviceID" title="کد سرویس" width="150px%"
+                                   headerClass="kendo-grid">
+                </kendo-grid-column>
+
+
+                <kendo-grid-column field="serviceName" title="نام سرویس" width="150px"
+                                   headerClass="kendo-grid">
+                </kendo-grid-column>
+
+                <kendo-grid-column field="indexQuantity" title="تعداد" width="150px"
+                                   headerClass="kendo-grid">
+                </kendo-grid-column>
+
+
+                <kendo-grid-command-column headerClass="kendo-grid" title="نرخ آزاد" width="150">
+                  <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                    {{dataItem.freeRate | number}}
+                  </ng-template>
+                </kendo-grid-command-column>
+
+
+                <kendo-grid-command-column headerClass="kendo-grid" title="نرخ بیمه" width="150">
+                  <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                    {{dataItem.insuranceRate | number}}
+                  </ng-template>
+                </kendo-grid-command-column>
+
+
+                <kendo-grid-command-column headerClass="kendo-grid" title="سهم بیمه" width="150">
+                  <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                    {{dataItem.insuranceShareRate | number}}
+                  </ng-template>
+                </kendo-grid-command-column>
+
+
+                <kendo-grid-column title="اقدامات" width="150px" headerClass="kendo-grid">
+                  <ng-template kendoGridCellTemplate let-dataItem="dataItem" let-rowIndex="rowIndex">
+<!--                    <div class="btn-group btn-group-sm">-->
+<!--                      <button  class="delete" (click)="onDelete(dataItem.id)" tooltip="حذف"></button>-->
+<!--                    </div>-->
+
+
+
+                    <a data-toggle="tooltip" data-placement="top" title="حذف سرویس" (click)="removeHandler(dataItem,rowIndex)"><i
+                      class="fa fa-trash color-red action-button">  </i> </a>
+                  </ng-template>
+                </kendo-grid-column>
+
+
+              </kendo-grid>
+              <!--      </div>-->
+              <ng-template #noRecord>
+                <div class="col-12">
+                  <div class="alert alert-danger">
+                    رکوردی جهت نمایش وجود ندارد
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+
+
+          </div>
+
+
+        </app-default-panel>
+
+
+        <app-default-panel headerTitle="اطلاعات مالی" panelId="salaryInformation">
+          <div class="row paddingtotal" style="margin: 5px;">
+            <div class="col-md-6">
+              <span>جمع کل</span>
+              <input    name="insuranceRate" [(ngModel)]="insuranceRate"  type="text" class="form-control rtl" disabled
+                     style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>سهم بیمه</span>
+              <input    name="insuranceShareRate" [(ngModel)]="insuranceShareRate"  type="text" class="form-control rtl" disabled
+                        style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>سهم بیمار</span>
+              <input    name="patientShareRate" [(ngModel)]="patientShareRate"  type="text" class="form-control rtl" disabled
+                        style="background-color: #D6F5CB"/>
+            </div>
+
+            <div class="col-md-6">
+              <span>مبلغ کل</span>
+              <input    name="freeRate" [(ngModel)]="freeRate"  type="text" class="form-control rtl" disabled
+                        style="background-color: #D6F5CB"/>
+            </div>
+
+            <div class="col-md-6">
+              <span>خارج از تعهد</span>
+              <input    name="outOfRate" [(ngModel)]="outOfRate"  type="text" class="form-control rtl" disabled
+                        style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>قابل پرداخت</span>
+              <input    name="mustPay" [(ngModel)]="mustPay"  type="text" class="form-control rtl" disabled
+                        style="background-color: #D6F5CB"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>تخفیف</span>
+              <input    name="discountRate" [(ngModel)]="this.receptionById.discountRate"  (blur)="CalculatedDiscountRate(this.receptionById.discountRate)"  type="text" class="form-control rtl"/>
+            </div>
+
+
+            <div class="col-md-6">
+              <span>پرداخت شده</span>
+              <input    name="paymentRate" [(ngModel)]="paymentRate"  type="text" class="form-control rtl" disabled
+                        style="background-color: #D6F5CB"/>
+            </div>
+
+
+
+          </div>
+        </app-default-panel>
+
+
+      </div>
+
+
+    </div>
+
+    <div class="rectangle">
+      <button type="submit" #registerButton class="button button4"
+              style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">ثبت <i
+        class="fa fa-floppy-o" aria-hidden="true"> </i></button>
+      <button class="button button4"
+              style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">برگ پذیرش
+        <i class="fa fa-newspaper-o" aria-hidden="true"> </i></button>
+      <button class="button button4"
+              style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">چاپ
+        رضایتمندی <i class="fa fa-newspaper-o" aria-hidden="true"> </i></button>
+      <button class="button button4"
+              style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">شرح حال
+        وریدی <i class="fa fa-address-card-o" aria-hidden="true"> </i></button>
+      <button class="button button4"
+              style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">صندوق <i
+        class="fa fa-print" aria-hidden="true"> </i></button>
+      <button class="button button4"
+              style="background-color: #458bd6;color:white;border: none;margin-top: 10px;margin-right: 5px;">مراجعه مجدد
+        <i class="fa fa-refresh" aria-hidden="true"> </i></button>
+      <button class="button button4"
+              style="background-color: #d64fd2;color:white;border: none;margin-top: 10px;margin-right: 5px;">جستجو <i
+        class="fa fa-search" aria-hidden="true"> </i></button>
+
+
+    </div>
+  </div>
+</form>
+
+
+
+
+<app-default-modal ParentId="patientList" headerText="لیست بیماران">
+  <app-patient-list [receptionList]="receptionList" [lastNameSearch]="this.lastNameSearch" (receptionEmmit)="getReception($event)"
+                    *ngIf="this.isShowModal === true  "></app-patient-list>
+<!--  <app-patient-list [receptionList]="receptionList" [lastNameSearch]=lastNameSearch  *ngIf="this.receptionList !== undefined && this.lastNameSearch !== undefined && this.lastNameSearch!==''"></app-patient-list>-->
+</app-default-modal>
