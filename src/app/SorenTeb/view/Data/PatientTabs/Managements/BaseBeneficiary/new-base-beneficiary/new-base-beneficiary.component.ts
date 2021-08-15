@@ -38,6 +38,7 @@ export class NewBaseBeneficiaryComponent extends PatientDetailBaseComponent impl
 
 
 
+
     this.makeResponse(this.baseBeneficiaryService.createtBaseBeneficiary(this.baseBeneficiary), true, resultObject => {
       console.log('موقع ثبت پزشک');
       console.log(resultObject.result);
